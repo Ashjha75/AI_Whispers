@@ -7,16 +7,11 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 @Service
 public class aiServiceImpl implements aiService {
 
-    private  final OllamaChatModel ollamaChatModel;
-
     @Autowired
-    public aiServiceImpl(OllamaChatModel ollamaChatModel) {
-        this.ollamaChatModel = ollamaChatModel;
-    }
+    private OllamaChatModel ollamaChatModel;
 
     @Override
     public String getResponse(chatDto chatDto) {
@@ -48,5 +43,4 @@ public class aiServiceImpl implements aiService {
             return "Error while communicating with Ollama: " + e.getMessage();
         }
     }
-
 }
